@@ -13,7 +13,7 @@ tags:
   - building-mcp-track-enterprise
 ---
 
-# ⚡ Instant MCP - Deploy Anywhere, Connect Everywhere
+# ⚡ Instant MCP - Create, Manage and Deploy MCP Servers Instantly within seconds
 
 > **Instantly deploy MCP servers and access them from anywhere. Powered by Modal.**
 
