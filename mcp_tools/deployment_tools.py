@@ -1113,6 +1113,10 @@ def list_deployments() -> dict:
                     "status": dep.status,
                     "created_at": dep.created_at.isoformat() if dep.created_at else None,
                     "description": dep.description,
+                    "category": dep.category or "Uncategorized",
+                    "tags": dep.tags or [],
+                    "version": dep.version or "1.0.0",
+                    "author": dep.author or "Anonymous",
                 })
 
             return {

@@ -162,10 +162,11 @@ class Deployment(Base):
 
     @staticmethod
     def get_active_deployments(db: Session) -> List["Deployment"]:
-        """Get all active (non-deleted) deployments."""
+        """Get all active (non-deleted) deployments with status 'deployed'."""
         return (
             db.query(Deployment)
             .filter(Deployment.deleted_at.is_(None))
+            .filter(Deployment.status == "deployed")
             .order_by(Deployment.created_at.desc())
             .all()
         )

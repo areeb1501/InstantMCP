@@ -100,7 +100,6 @@ def create_ai_chat_deployment():
                         ("🚀 Create New MCP", "create"),
                         ("✏️ Modify Existing MCP", "modify"),
                         ("🔍 Debug & Troubleshoot", "debug"),
-                        ("📊 View Stats & Status", "stats"),
                     ],
                     value="create",
                     label="Mode",
@@ -611,8 +610,6 @@ USER REQUEST: {message}
 
 NOTE: The deployment code is already loaded above. You can directly suggest modifications without calling get_deployment_code. When you're ready to update, use the update_deployment_code tool with deployment_id='{metadata['deployment_id']}'.
 """
-            elif mode == "stats":
-                context_message = f"[Context: User wants to view statistics or status]\n\n{message}"
             elif mode == "debug":
                 context_message = f"[Context: User is debugging/troubleshooting]\n\n{message}"
 

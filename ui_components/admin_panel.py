@@ -135,8 +135,8 @@ def add_numbers(a: int, b: int) -> int:
             )
 
         deployments_df = gr.Dataframe(
-            headers=["ID", "Name", "Category", "Tags", "Version", "Author", "Status", "Requests", "Created"],
-            datatype=["str", "str", "str", "str", "str", "str", "str", "number", "str"],
+            headers=["ID", "Name", "Category", "Tags", "Version", "Author", "Status", "Created"],
+            datatype=["str", "str", "str", "str", "str", "str", "str", "str"],
             interactive=False,
             wrap=True,
             label="Deployments"
@@ -174,15 +174,14 @@ def add_numbers(a: int, b: int) -> int:
                     tags_str = ", ".join(dep.get("tags", [])) if dep.get("tags") else "—"
 
                     data.append([
-                        dep["deployment_id"][:16] + "...",  # Shortened ID
-                        dep["server_name"],
+                        dep.get("deployment_id", "")[:16] + "...",  # Shortened ID
+                        dep.get("server_name", "Unknown"),
                         dep.get("category", "Uncategorized"),
                         tags_str,
                         dep.get("version", "1.0.0"),
                         dep.get("author", "Anonymous"),
-                        dep["status"],
-                        dep["total_requests"],
-                        dep["created_at"][:10] if dep["created_at"] else "N/A"  # Date only
+                        dep.get("status", "unknown"),
+                        dep.get("created_at", "")[:10] if dep.get("created_at") else "N/A"  # Date only
                     ])
                     dropdown_choices.append(
                         (dep["server_name"], dep["deployment_id"])
@@ -227,15 +226,14 @@ def add_numbers(a: int, b: int) -> int:
                 if search_match and category_match:
                     tags_str = ", ".join(dep.get("tags", [])) if dep.get("tags") else "—"
                     filtered_data.append([
-                        dep["deployment_id"][:16] + "...",
-                        dep["server_name"],
+                        dep.get("deployment_id", "")[:16] + "...",
+                        dep.get("server_name", "Unknown"),
                         dep.get("category", "Uncategorized"),
                         tags_str,
                         dep.get("version", "1.0.0"),
                         dep.get("author", "Anonymous"),
-                        dep["status"],
-                        dep["total_requests"],
-                        dep["created_at"][:10] if dep["created_at"] else "N/A"
+                        dep.get("status", "unknown"),
+                        dep.get("created_at", "")[:10] if dep.get("created_at") else "N/A"
                     ])
             return filtered_data
 

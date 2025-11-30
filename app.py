@@ -179,43 +179,56 @@ button:hover {
 }
 
 /* ============================================
-   TAB CONTENT CONSISTENCY FIX
+   TAB CONTENT WIDTH CONSISTENCY
    ============================================ */
 
-/* Ensure all tab panels have consistent sizing */
+/* Force tabs container to full width */
+.tabs {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Tab panel wrapper - ensure consistent width */
 .tabitem {
     width: 100% !important;
+    min-width: 100% !important;
     max-width: 100% !important;
-    min-height: 600px !important;
+    box-sizing: border-box !important;
 }
 
-/* Ensure tab content fills the space properly */
-.tabitem > .block,
+/* The inner content wrapper of each tab */
 .tabitem > div {
     width: 100% !important;
-}
-
-/* Fix for nested Blocks within tabs */
-.tabitem .gradio-container {
+    min-width: 100% !important;
     max-width: 100% !important;
-    padding: 1rem !important;
 }
 
-/* Ensure rows stay full width */
+/* Nested Blocks inside tabs */
+.tabitem .block {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Ensure all form elements stretch full width */
+.tabitem .form {
+    width: 100% !important;
+}
+
+/* Fix row containers */
 .tabitem .row {
     width: 100% !important;
-    gap: 1rem !important;
+    max-width: 100% !important;
 }
 
-/* Ensure columns don't collapse */
-.tabitem .column {
+/* Prevent any element from exceeding tab width */
+.tabitem * {
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+}
+
+/* Specific fix for the split-column layouts (AI Chat, Code Editor) */
+.tabitem .row > .column {
     min-width: 0 !important;
-    flex: 1 1 auto !important;
-}
-
-/* Prevent content from shrinking */
-.tabitem .wrap {
-    width: 100% !important;
 }
 """
 
