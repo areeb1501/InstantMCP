@@ -16,6 +16,14 @@ tags: ["mcp-in-action-track-enterprise", "mcp-in-action-track-consumer", "buildi
 
 Transform your workflow by deploying Model Context Protocol (MCP) servers in seconds, not hours. Connect to external APIs, save on token costs, and extend your AI capabilities with unlimited custom tools.
 
+🎬 **Demo Video:**
+
+[![Demo Video](https://img.shields.io/badge/Watch%20Demo-Coming%20Soon-red?style=for-the-badge&logo=youtube)](https://youtube.com)
+
+🚀 **Try the Live Demo:** [https://mcp-1st-birthday-instantmcp.hf.space](https://mcp-1st-birthday-instantmcp.hf.space)
+
+🔗 **Live MCP Server:** `https://mcp-1st-birthday-instantmcp.hf.space/gradio_api/mcp/`
+
 ---
 
 ## 🏆 Built for MCP's 1st Birthday Hackathon
@@ -24,28 +32,20 @@ Transform your workflow by deploying Model Context Protocol (MCP) servers in sec
 - 🔧 **Building MCP Track** - Enterprise
 - 🤖 **MCP in Action Track** - Enterprise & Consumer
 
-**Demo Video:** [Coming Soon - Placeholder]
-
-**Social Media Post:** [Link to be added]
-
 ---
 
 ## 🎯 Sponsors & Key Technologies
-
-<div align="center">
 
 ### Powered By
 
 | Technology | Usage |
 |------------|-------|
-| ![Modal](https://via.placeholder.com/150x50?text=Modal+Logo) | **Serverless deployment** - Zero-downtime deployments with automatic scaling |
-| ![Anthropic](https://via.placeholder.com/150x50?text=Anthropic+Logo) | **Claude AI** - Intelligent code generation and deployment assistance |
-| ![Gradio](https://via.placeholder.com/150x50?text=Gradio+Logo) | **Gradio v6** - Interactive UI with enhanced mobile support and real-time updates |
-| ![Nebius](https://via.placeholder.com/150x50?text=Nebius+Logo) | **AI Security Scanning** - Intelligent vulnerability detection before deployment |
-| ![SambaNova](https://via.placeholder.com/150x50?text=SambaNova+Logo) | **Alternative LLM** - Cost-effective AI assistance with Llama 3.3 70B |
-| ![Hugging Face](https://via.placeholder.com/150x50?text=HF+Logo) | **Hosting & Deployment** - Platform for sharing and deployment |
-
-</div>
+| **🚀 Modal** | Serverless deployment — zero-downtime, auto-scaling, pay only when used |
+| **🧠 Anthropic** | Claude AI for intelligent code generation and natural language deployment |
+| **🎨 Gradio v6** | Interactive UI with native MCP support and real-time streaming |
+| **🔒 Nebius** | AI-powered security scanning before every deployment |
+| **⚡ SambaNova** | Access to open-source models as a cost-effective alternative |
+| **🤗 Hugging Face** | Public hosting and community sharing platform |
 
 ---
 
@@ -53,12 +53,12 @@ Transform your workflow by deploying Model Context Protocol (MCP) servers in sec
 
 **Instant MCP** is a complete platform that transforms how you create, deploy, and manage MCP servers. Built with Gradio v6 and powered by Modal's serverless infrastructure, it enables developers to:
 
-✅ **Deploy MCP servers instantly** - From idea to production in under 60 seconds
-✅ **Zero infrastructure management** - Modal handles scaling, cold starts, and costs
-✅ **AI-assisted development** - Claude and SambaNova integration for intelligent code generation
-✅ **Enterprise-grade security** - Automated vulnerability scanning with Nebius AI
-✅ **Comprehensive analytics** - Track usage, performance, and costs in real-time
-✅ **Cost optimization** - Scale to zero when idle, pay only for what you use
+- ✅ **Deploy MCP servers instantly** - From idea to production in under 60 seconds
+- ✅ **Zero infrastructure management** - Modal handles scaling, cold starts, and costs
+- ✅ **AI-assisted development** - Claude and SambaNova integration for intelligent code generation
+- ✅ **Enterprise-grade security** - Automated vulnerability scanning with Nebius AI
+- ✅ **Comprehensive analytics** - Track usage, performance, and costs in real-time (Coming Soon)
+- ✅ **Cost optimization** - Scale to zero when idle, pay only for what you use
 
 ---
 
@@ -326,55 +326,7 @@ Use this before modifying a deployment to see current code, packages, and tools.
 
 ---
 
-### Analytics & Statistics
-
-#### `get_deployment_stats`
-**Get comprehensive usage statistics**
-
-```python
-{
-  "deployment_id": "deploy-mcp-weather-abc123",
-  "days": 30
-}
-```
-
-Returns:
-- Total requests and success rate
-- Average response time
-- Peak usage periods
-- Error rate analysis
-- Client distribution
-
----
-
-#### `get_tool_usage`
-**See which tools are used most**
-
-```python
-{
-  "deployment_id": "deploy-mcp-weather-abc123",
-  "days": 30,
-  "limit": 10
-}
-```
-
-**Insights:**
-- Most popular tools
-- Request counts per tool
-- Success rates by tool
-- Performance comparison
-
----
-
-#### `get_all_stats_summary`
-**Quick overview of all deployments**
-
-Returns:
-- Total deployments count
-- Total requests across all servers
-- Average success rate
-- Active vs. idle deployments
-- Resource utilization
+### Analytics & Statistics (Coming Soon - In Development)
 
 ---
 
@@ -412,77 +364,6 @@ Returns:
 ![Security](https://via.placeholder.com/800x450?text=Security+Scan+-+Vulnerability+Detection)
 
 *AI-powered security scanning with detailed vulnerability reports*
-
----
-
-## 🚀 Quick Start
-
-### Prerequisites
-
-```bash
-# Required
-- Python 3.10+
-- Modal account (free tier works)
-- PostgreSQL database (Neon, Supabase, or local)
-
-# Optional (for AI features)
-- Anthropic API key (Claude)
-- SambaNova API key (Llama)
-- Nebius API key (Security scanning)
-```
-
-### Installation
-
-```bash
-# 1. Clone the repository
-git clone https://github.com/yourusername/instant-mcp.git
-cd instant-mcp
-
-# 2. Install dependencies
-pip install -r requirements.txt
-
-# 3. Set up environment variables
-cp .env.example .env
-# Edit .env with your API keys and database URL
-
-# 4. Initialize database
-psql $DATABASE_URL -f tests/init_db.sql
-
-# 5. Authenticate with Modal
-modal token new
-```
-
-### Running Locally
-
-```bash
-# Start the main application
-python app.py
-
-# Access at: http://localhost:7860
-```
-
-### Environment Variables
-
-```bash
-# Database (Required)
-DATABASE_URL=postgresql://user:pass@host:5432/db
-
-# AI Providers (Optional - choose at least one)
-ANTHROPIC_API_KEY=sk-ant-xxxxx
-SAMBANOVA_API_KEY=your-key-here
-
-# Security Scanning (Recommended)
-NEBIUS_API_KEY=your-nebius-key
-SECURITY_SCANNING_ENABLED=true
-
-# Modal (Required for deployment)
-MODAL_TOKEN_ID=your-modal-token
-MODAL_TOKEN_SECRET=your-modal-secret
-
-# Application
-PORT=7860
-MCP_BASE_URL=http://localhost:7860
-```
 
 ---
 
@@ -541,6 +422,8 @@ Close and reopen Claude Desktop. Your MCP server tools will now be available!
 ---
 
 ## 🎓 How to Use
+
+> **Note:** Instant MCP works with **any MCP client that supports SSE** (Server-Sent Events) — including Claude Desktop, Cursor, Windsurf, and more. You can also use Claude itself to develop and deploy new MCP servers through this platform!
 
 ### Method 1: AI Assistant (Recommended)
 
@@ -645,70 +528,22 @@ def my_function(param: str) -> str:
 - Tool use for deployment
 - Intelligent debugging
 
-**Llama 3.3 70B (SambaNova)** - Cost-effective alternative
-- Same capabilities as Claude
-- Lower cost per token
+**SambaNova** - Cost-effective AI alternative
 - OpenAI-compatible API
+- Available models:
+  - Meta-Llama-3.3-70B-Instruct
+  - Meta-Llama-3.1-405B-Instruct
+  - Meta-Llama-3.1-70B-Instruct
+  - Meta-Llama-3.1-8B-Instruct
+  - DeepSeek-R1
+  - DeepSeek-R1-Distill-Llama-70B
+  - QwQ-32B
 
 **Nebius AI** - Security scanning
 - Vulnerability detection
 - Code analysis
 - Threat classification
 - Automated blocking
-
----
-
-## 📊 Database Schema
-
-```sql
--- Main deployments table
-CREATE TABLE deployments (
-  id SERIAL PRIMARY KEY,
-  deployment_id VARCHAR(255) UNIQUE,
-  app_name VARCHAR(255),
-  server_name VARCHAR(255),
-  url TEXT,
-  mcp_endpoint TEXT,
-  status VARCHAR(50),
-  created_at TIMESTAMP,
-  -- ... usage stats cached
-);
-
--- Package dependencies
-CREATE TABLE deployment_packages (
-  id SERIAL PRIMARY KEY,
-  deployment_id VARCHAR(255),
-  package_name VARCHAR(255)
-);
-
--- Code storage
-CREATE TABLE deployment_files (
-  id SERIAL PRIMARY KEY,
-  deployment_id VARCHAR(255),
-  file_type VARCHAR(50),
-  file_content TEXT
-);
-
--- Audit log
-CREATE TABLE deployment_history (
-  id SERIAL PRIMARY KEY,
-  deployment_id VARCHAR(255),
-  action VARCHAR(100),
-  timestamp TIMESTAMP,
-  details JSONB
-);
-
--- Detailed usage tracking
-CREATE TABLE usage_events (
-  id SERIAL PRIMARY KEY,
-  deployment_id VARCHAR(255),
-  tool_name VARCHAR(255),
-  timestamp TIMESTAMP,
-  duration_ms INTEGER,
-  success BOOLEAN,
-  client_id VARCHAR(255)
-);
-```
 
 ---
 
@@ -813,25 +648,35 @@ By deploying specialized MCP servers:
 
 ## 🚧 Roadmap
 
+### Completed
+
+- [x] Deploy MCP servers to Modal with one click
+- [x] AI-powered code generation (Claude & SambaNova)
+- [x] Security scanning before deployment (Nebius AI)
+- [x] Admin panel for deployment management
+- [x] Code editor with live editing
+- [x] Log viewer for deployment history
+- [x] Webhook endpoint for usage tracking
+- [x] SSE-compatible MCP server endpoint
+
 ### Upcoming Features
 
-- [ ] Real-time webhook tracking
+- [ ] Analytics dashboard with visualizations
 - [ ] Cost tracking dashboard
 - [ ] Export functionality (CSV/JSON)
+- [ ] Template marketplace with pre-built MCP servers
+- [ ] GitHub integration for version control
 - [ ] Multi-user collaboration
-- [ ] Template marketplace
-- [ ] GitHub integration
 - [ ] Automated testing framework
-- [ ] Performance benchmarking
 
 ---
 
 ## 📚 Documentation
 
-- **Quick Start:** See above
-- **API Reference:** [API.md](./API.md) (coming soon)
-- **Migration Guide:** [MIGRATION_GUIDE.md](./MIGRATION_GUIDE.md)
-- **Security Best Practices:** [SECURITY.md](./SECURITY.md) (coming soon)
+- **MCP Protocol:** [Model Context Protocol](https://github.com/modelcontextprotocol)
+- **Gradio MCP Docs:** [Gradio MCP Server](https://www.gradio.app/docs/mcp)
+- **Modal Docs:** [Modal Documentation](https://modal.com/docs)
+- **FastMCP:** [FastMCP Framework](https://github.com/jlowin/fastmcp)
 
 ---
 
@@ -869,20 +714,38 @@ Special thanks to:
 
 ## 🎉 Get Started Now!
 
-```bash
-# Install
-git clone https://github.com/yourusername/instant-mcp.git
-cd instant-mcp
-pip install -r requirements.txt
+### Option 1: Use the Live Platform (Recommended)
 
-# Configure
-cp .env.example .env
-# Add your API keys
+1. **Visit the live app:** [https://mcp-1st-birthday-instantmcp.hf.space](https://mcp-1st-birthday-instantmcp.hf.space)
 
-# Run
-python app.py
+2. **Connect to the MCP Server** — Add this to your `claude_desktop_config.json`:
 
-# Deploy your first MCP server in under 60 seconds! ⚡
+```json
+{
+  "mcpServers": {
+    "instant-mcp": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://mcp-1st-birthday-instantmcp.hf.space/gradio_api/mcp/"
+      ]
+    }
+  }
+}
+```
+
+3. **Restart Claude Desktop** and start deploying MCP servers instantly!
+
+**Config file locations:**
+- **macOS**: `~/Library/Application Support/Claude/claude_desktop_config.json`
+- **Windows**: `%APPDATA%/Claude/claude_desktop_config.json`
+- **Linux**: `~/.config/Claude/claude_desktop_config.json`
+
+### Option 2: Use Any SSE-Compatible MCP Client - Claude
+
+Connect any MCP client that supports SSE to:
+```
+https://mcp-1st-birthday-instantmcp.hf.space/gradio_api/mcp/
 ```
 
 ---
@@ -891,8 +754,8 @@ python app.py
 
 **Built with ❤️ for MCP's 1st Birthday Hackathon**
 
-[Live Demo](https://huggingface.co/spaces/yourspace/instant-mcp) • [Documentation](./docs) • [Report Bug](https://github.com/yourrepo/issues) • [Request Feature](https://github.com/yourrepo/issues)
+**Built by [Areeb Pasha](https://areebpasha.com)**
 
-⭐ **Star this repo if you find it useful!** ⭐
+[Live Demo](https://mcp-1st-birthday-instantmcp.hf.space) • [Hugging Face Space](https://huggingface.co/spaces/MCP-1st-Birthday/InstantMCP)
 
 </div>

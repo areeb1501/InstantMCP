@@ -248,6 +248,26 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
 
     # Tabbed interface
     with gr.Tabs():
+        # Docs Tab - README documentation (First tab)
+        with gr.Tab("📖 Docs"):
+            # Read and render the README file
+            readme_path = os.path.join(os.path.dirname(__file__), "README.md")
+            try:
+                with open(readme_path, "r") as f:
+                    readme_content = f.read()
+                    # Remove the YAML frontmatter if present
+                    if readme_content.startswith("---"):
+                        parts = readme_content.split("---", 2)
+                        if len(parts) >= 3:
+                            readme_content = parts[2].strip()
+            except FileNotFoundError:
+                readme_content = "README.md not found. Please refer to the [online documentation](https://huggingface.co/spaces/MCP-1st-Birthday/InstantMCP/blob/main/README.md)."
+            gr.Markdown(readme_content)
+
+        # AI Assistant Tab - Chat interface for AI-powered deployment
+        with gr.Tab("🤖 AI Assistant"):
+            ai_chat = create_ai_chat_deployment()
+
         # Admin Panel Tab - Main deployment management
         with gr.Tab("⚙️ Admin Panel"):
             admin_panel = create_admin_panel()
@@ -255,10 +275,6 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
         # Code Editor Tab - Edit deployment code
         with gr.Tab("💻 Code Editor"):
             code_editor = create_code_editor()
-
-        # AI Assistant Tab - Chat interface for AI-powered deployment
-        with gr.Tab("🤖 AI Assistant"):
-            ai_chat = create_ai_chat_deployment()
 
         # Stats Dashboard Tab - Analytics and visualizations
         with gr.Tab("📊 Statistics"):
@@ -273,9 +289,9 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
         with gr.Column():
             gr.Markdown(
                 """
-                **MCP SSE Endpoint**: `/gradio_api/mcp/` •
-                **Documentation**: [Model Context Protocol](https://github.com/modelcontextprotocol) •
-                Built with [Gradio](https://gradio.app)
+                **MCP Server**: `https://mcp-1st-birthday-instantmcp.hf.space/gradio_api/mcp/` •
+                **Docs**: [README](https://huggingface.co/spaces/MCP-1st-Birthday/InstantMCP/blob/main/README.md) •
+                Built with [Gradio](https://gradio.app) by [Areeb Pasha](https://areebpasha.com)
                 """
             )
 
