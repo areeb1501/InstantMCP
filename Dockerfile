@@ -34,6 +34,7 @@ RUN mkdir -p /app/deployments /home/user/.modal && \
 
 # Copy application code and required directories
 COPY --chown=user:user app.py .
+COPY --chown=user:user README.md .
 COPY --chown=user:user mcp_tools/ ./mcp_tools/
 COPY --chown=user:user ui_components/ ./ui_components/
 COPY --chown=user:user utils/ ./utils/
