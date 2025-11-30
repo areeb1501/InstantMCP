@@ -37,6 +37,8 @@ def create_ai_chat_deployment():
         gr.Markdown("""
         Chat with Claude to create, modify, or debug MCP servers.
         
+        **🎉 To test, select a SambaNova model - no API key required!**
+        
         **🔧 The AI assistant has full access to deployment tools and can actually:**
         - ✅ Deploy new MCP servers to Modal.com
         - ✅ List and check your existing deployments
