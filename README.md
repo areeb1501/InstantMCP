@@ -29,6 +29,8 @@ Transform your workflow by deploying Model Context Protocol (MCP) servers in sec
 
 ## 🏆 Built for MCP's 1st Birthday Hackathon
 
+📢 **Social Post:** [Twitter/X](https://x.com/_areebpasha/status/1995272387433205881)
+
 **Submission Tracks:**
 - 🔧 **Building MCP Track** - Enterprise
 - 🤖 **MCP in Action Track** - Enterprise & Consumer
