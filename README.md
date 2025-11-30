@@ -849,7 +849,7 @@ We welcome contributions! Areas of interest:
 
 ## 📄 License
 
-MIT License - See [LICENSE](./LICENSE) for details
+BSL License
 
 ---
 

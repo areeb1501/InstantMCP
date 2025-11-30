@@ -29,52 +29,55 @@ def create_code_editor():
         gr.Markdown("## 💻 Code Editor")
         gr.Markdown("Edit and view your deployment code inline")
 
-        # Load Deployment Section
+        # Main 4-column layout
         with gr.Row():
-            deployment_selector = gr.Dropdown(
-                label="Select Deployment",
-                choices=[],
-                interactive=True,
-                scale=3
-            )
-            load_btn = gr.Button("📥 Load Code", size="sm", scale=1)
-            refresh_deployments_btn = gr.Button("🔄", size="sm", scale=0)
-
-        # Deployment Info Display
-        with gr.Row():
+            # Column 1: Deployment Selection & Info
             with gr.Column(scale=1):
+                gr.Markdown("### 📂 Select Deployment")
+                deployment_selector = gr.Dropdown(
+                    label="Deployment",
+                    choices=[],
+                    interactive=True
+                )
+                with gr.Row():
+                    load_btn = gr.Button("📥 Load", size="sm", scale=2)
+                    refresh_deployments_btn = gr.Button("🔄", size="sm", scale=1)
+                
                 deployment_info = gr.Markdown("*Select a deployment to view details*")
+
+            # Column 2: Code Editor
+            with gr.Column(scale=2):
+                gr.Markdown("### 📝 MCP Tools Code")
+                code_editor = gr.Code(
+                    language="python",
+                    label="",
+                    lines=18,
+                    interactive=True,
+                    value="# Load a deployment to view and edit code"
+                )
+                
+                # Action Buttons
+                with gr.Row():
+                    save_btn = gr.Button("💾 Save & Redeploy", variant="primary", interactive=True, scale=2)
+                    preview_btn = gr.Button("👁️ Preview", variant="secondary", scale=1)
+                    deploy_btn = gr.Button("🚀 Deploy as New (Coming Soon)", interactive=False, scale=1)
+
+            # Column 3: Packages & Tools Preview
             with gr.Column(scale=1):
+                gr.Markdown("### 📦 Packages & Tools")
                 packages_display = gr.Textbox(
                     label="Current Packages",
-                    interactive=True,  # Allow editing packages
-                    placeholder="No deployment loaded"
+                    interactive=True,
+                    placeholder="No deployment loaded",
+                    lines=2
                 )
-
-        # Code Editor Section
-        gr.Markdown("### 📝 MCP Tools Code")
-        code_editor = gr.Code(
-            language="python",
-            label="",
-            lines=20,
-            interactive=True,
-            value="# Load a deployment to view and edit code"
-        )
-
-        # Tools Preview
-        tools_preview = gr.JSON(
-            label="📋 Detected Tools",
-            value={}
-        )
-
-        # Action Buttons
-        with gr.Row():
-            save_btn = gr.Button("💾 Save & Redeploy", variant="primary", interactive=True)
-            preview_btn = gr.Button("👁️ Preview", variant="secondary")
-            deploy_btn = gr.Button("🚀 Deploy as New (Coming Soon)", interactive=False)
-
-        # Output/Result Display
-        output = gr.JSON(label="Result")
+                tools_preview = gr.JSON(
+                    label="📋 Detected Tools",
+                    value={}
+                )
+                
+                # Output/Result Display
+                output = gr.JSON(label="Result")
 
         # Functions
         def load_deployment_list():
