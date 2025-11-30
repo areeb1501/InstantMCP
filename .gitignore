@@ -1,0 +1,8 @@
+tests/
+*.log
+__pycache__/
+*.pyc
+.env
+enhancements/
+deployments_archive
+.claude

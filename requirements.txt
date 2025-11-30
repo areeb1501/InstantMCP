@@ -1,0 +1,30 @@
+# Core Dependencies - Gradio with MCP Support
+gradio>=5.0.0
+gradio[mcp]>=5.0.0  # Gradio with native MCP server support
+fastapi>=0.115.0
+uvicorn>=0.20.0
+pydantic>=2.0.0
+
+# Data Visualization (for stats dashboard)
+plotly>=5.18.0
+pandas>=2.0.0
+
+# Database
+psycopg2-binary>=2.9.0  
+SQLAlchemy>=2.0.0  
+alembic>=1.13.0  
+
+# Email Provider
+resend>=2.0.0  
+
+# MCP & Deployment
+modal>=0.60.0
+fastmcp>=2.10.0
+
+# Utilities
+requests
+python-dotenv 
+
+# AI Integrations
+openai
+anthropic
