@@ -140,14 +140,13 @@ def create_ai_chat_deployment():
                     send_btn = gr.Button("Send", variant="primary", scale=1)
 
                 # Quick examples organized by mode
-                with gr.Accordion("💡 Example Prompts", open=False):
-                    gr.Markdown("### Create Mode")
+                with gr.Accordion("💡 Example Prompts", open=True):
+                    gr.Markdown("### Create Mode (No API Keys Required!)")
                     gr.Examples(
                         examples=[
-                            "Create an MCP that fetches weather data using wttr.in API",
-                            "Build an MCP server that converts currencies using an exchange rate API",
-                            "Make an MCP tool that searches books using the Open Library API",
-                            "Create an MCP with two tools: one to get random cat facts and one to get dog facts",
+                            "Create an MCP server for Weather & Geo with 3 tools: (1) get weather forecast using https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&current_weather=true, (2) get US weather data using https://api.weather.gov/points/39.7456,-97.0892, (3) lookup zip code info using http://api.zippopotam.us/us/90210",
+                            "Create an MCP server for Fun & Knowledge with 3 tools: (1) get Pokemon data using https://pokeapi.co/api/v2/pokemon/ditto, (2) get instant answers using https://api.duckduckgo.com/?q=DuckDuckGo&format=json, (3) get Bitcoin price using https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd",
+                            "Create an MCP server for Random Facts & Testing with 3 tools: (1) get random cat facts using https://catfact.ninja/fact, (2) get random dog images using https://dog.ceo/api/breeds/image/random, (3) get random user profiles using https://randomuser.me/api/",
                         ],
                         inputs=msg_input,
                         label="Creation Examples"
