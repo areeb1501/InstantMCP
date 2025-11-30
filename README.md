@@ -648,31 +648,6 @@ By deploying specialized MCP servers:
 
 ---
 
-## 🚧 Roadmap
-
-### Completed
-
-- [x] Deploy MCP servers to Modal with one click
-- [x] AI-powered code generation (Claude & SambaNova)
-- [x] Security scanning before deployment (Nebius AI)
-- [x] Admin panel for deployment management
-- [x] Code editor with live editing
-- [x] Log viewer for deployment history
-- [x] Webhook endpoint for usage tracking
-- [x] SSE-compatible MCP server endpoint
-
-### Upcoming Features
-
-- [ ] Analytics dashboard with visualizations
-- [ ] Cost tracking dashboard
-- [ ] Export functionality (CSV/JSON)
-- [ ] Template marketplace with pre-built MCP servers
-- [ ] GitHub integration for version control
-- [ ] Multi-user collaboration
-- [ ] Automated testing framework
-
----
-
 ## 📚 Documentation
 
 - **MCP Protocol:** [Model Context Protocol](https://github.com/modelcontextprotocol)
