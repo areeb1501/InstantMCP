@@ -16,9 +16,7 @@ tags: ["mcp-in-action-track-enterprise", "mcp-in-action-track-consumer", "buildi
 
 Transform your workflow by deploying Model Context Protocol (MCP) servers in seconds, not hours. Connect to external APIs, save on token costs, and extend your AI capabilities with unlimited custom tools.
 
-🎬 **Demo Video:**
-
-[![Demo Video](https://img.shields.io/badge/Watch%20Demo-Coming%20Soon-red?style=for-the-badge&logo=youtube)](https://youtube.com)
+▶️ [Watch the demo on YouTube](https://www.youtube.com/watch?v=re75nevCMjI)
 
 🚀 **Try the Live Demo:** [https://mcp-1st-birthday-instantmcp.hf.space](https://mcp-1st-birthday-instantmcp.hf.space)
 
@@ -332,38 +330,42 @@ Use this before modifying a deployment to see current code, packages, and tools.
 
 ## 📸 Screenshots
 
-### Main Dashboard
-![Main Dashboard](https://via.placeholder.com/800x450?text=Main+Dashboard+-+Deployment+Management)
-
-*Deploy, manage, and monitor all your MCP servers from one unified interface*
-
----
-
-### AI Assistant Chat (Gradio v6 Agentic Chatbot)
-![AI Chat](https://via.placeholder.com/800x450?text=AI+Assistant+-+Natural+Language+Deployment)
+### AI Assistant
+![AI Assistant](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/AI%20Assistant.png)
 
 *Chat with Claude or SambaNova to create MCP servers using natural language*
 
 ---
 
+### Admin Panel
+![Admin Panel 1](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/admin%20page%201.png)
+
+*Deploy, manage, and monitor all your MCP servers from one unified interface*
+
+![Admin Panel 2](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/admin%20page%202.png)
+
+*View deployment details and status*
+
+---
+
 ### Code Editor
-![Code Editor](https://via.placeholder.com/800x450?text=Code+Editor+-+Edit+Deployments)
+![Code Editor](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/code%20editor.png)
 
 *Edit deployment code with syntax highlighting and live preview*
 
 ---
 
-### Analytics Dashboard
-![Analytics](https://via.placeholder.com/800x450?text=Analytics+Dashboard+-+Usage+Statistics)
+### Deployment Logs
+![Deployment Logs](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/deployment%20logs.png)
 
-*Real-time analytics showing usage patterns, performance metrics, and cost tracking*
+*Track deployment history and events*
 
 ---
 
-### Security Scan Results
-![Security](https://via.placeholder.com/800x450?text=Security+Scan+-+Vulnerability+Detection)
+### Claude Desktop Integration
+![Claude Tools](https://huggingface.co/datasets/MCP-1st-Birthday/InstantMCP/resolve/main/claude%20tools.png)
 
-*AI-powered security scanning with detailed vulnerability reports*
+*Your deployed MCP servers accessible directly in Claude Desktop*
 
 ---
 

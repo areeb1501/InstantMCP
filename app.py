@@ -250,21 +250,48 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
     with gr.Tabs():
         # Docs Tab - README documentation (First tab)
         with gr.Tab("📖 Docs"):
+            # Embed YouTube demo video
+            gr.Markdown("## 🎬 Demo Video")
+            gr.HTML("""
+                <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; margin-bottom: 20px;">
+                    <iframe 
+                        src="https://www.youtube.com/embed/re75nevCMjI?vq=hd1440&hd=1&modestbranding=1&rel=0" 
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            """)
+            
             # Read and render the README file
-            readme_path = os.path.join(os.path.dirname(__file__), "README.md")
-            try:
-                with open(readme_path, "r") as f:
-                    readme_content = f.read()
-                    # Remove the YAML frontmatter if present
-                    if readme_content.startswith("---"):
-                        parts = readme_content.split("---", 2)
-                        if len(parts) >= 3:
-                            readme_content = parts[2].strip()
-            except FileNotFoundError:
+            # Try multiple paths to find README.md
+            possible_paths = [
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "README.md"),
+                os.path.join(os.getcwd(), "README.md"),
+                "/app/README.md",  # Docker container path
+                "README.md"
+            ]
+            
+            readme_content = None
+            for readme_path in possible_paths:
+                try:
+                    with open(readme_path, "r", encoding="utf-8") as f:
+                        readme_content = f.read()
+                        # Remove the YAML frontmatter if present
+                        if readme_content.startswith("---"):
+                            parts = readme_content.split("---", 2)
+                            if len(parts) >= 3:
+                                readme_content = parts[2].strip()
+                        break
+                except (FileNotFoundError, IOError):
+                    continue
+            
+            if readme_content is None:
                 readme_content = "README.md not found. Please refer to the [online documentation](https://huggingface.co/spaces/MCP-1st-Birthday/InstantMCP/blob/main/README.md)."
+            
             gr.Markdown(readme_content)
 
-        # AI Assistant Tab - Chat interface for AI-powered deployment
+        # AI Assistant Tab - Chat interface for AI-powered deployment (Main feature)
         with gr.Tab("🤖 AI Assistant"):
             ai_chat = create_ai_chat_deployment()
 

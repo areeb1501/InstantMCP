@@ -38,6 +38,7 @@ COPY --chown=user:user README.md .
 COPY --chown=user:user mcp_tools/ ./mcp_tools/
 COPY --chown=user:user ui_components/ ./ui_components/
 COPY --chown=user:user utils/ ./utils/
+COPY --chown=user:user images/ ./images/
 
 # Switch to non-root user
 USER user
