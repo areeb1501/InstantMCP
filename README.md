@@ -7,7 +7,10 @@ sdk: docker
 app_port: 7860
 pinned: false
 short_description: Deploy MCP servers instantly from anywhere, powered by Modal
-tags: ["mcp-in-action-track-enterprise", "mcp-in-action-track-consumer", "building-mcp-track-enterprise"]
+tags:
+  - mcp-in-action-track-enterprise
+  - mcp-in-action-track-consumer
+  - building-mcp-track-enterprise
 ---
 
 # ⚡ Instant MCP - Deploy Anywhere, Connect Everywhere
