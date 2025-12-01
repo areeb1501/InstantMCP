@@ -915,10 +915,8 @@ def get_cat_fact() -> str:
         env_vars_setup = _generate_env_vars_setup(env_vars)
 
         # Generate webhook configuration
-        webhook_url = os.getenv('MCP_WEBHOOK_URL', '')
-        if not webhook_url:
-            base_url = os.getenv('MCP_BASE_URL', 'http://localhost:7860')
-            webhook_url = f"{base_url}/api/webhook/usage"
+        from utils.webhook_receiver import get_webhook_url
+        webhook_url = get_webhook_url()
 
         webhook_env_vars_code = f'''
 secrets_dict["MCP_WEBHOOK_URL"] = "{webhook_url}"
@@ -1656,10 +1654,8 @@ def update_deployment_code(
             env_vars_setup = _generate_env_vars_setup(env_vars)
 
             # Generate webhook configuration
-            webhook_url = os.getenv('MCP_WEBHOOK_URL', '')
-            if not webhook_url:
-                base_url = os.getenv('MCP_BASE_URL', 'http://localhost:7860')
-                webhook_url = f"{base_url}/api/webhook/usage"
+            from utils.webhook_receiver import get_webhook_url
+            webhook_url = get_webhook_url()
 
             webhook_env_vars_code = f'''
 secrets_dict["MCP_WEBHOOK_URL"] = "{webhook_url}"
