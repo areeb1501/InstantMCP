@@ -7,6 +7,7 @@ A unified Gradio application that serves both:
 2. Interactive web UI for deployment management and analytics
 
 For Gradio Hackathon
+
 """
 
 import gradio as gr
@@ -242,7 +243,7 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
                 elem_classes="header-title"
             )
             gr.Markdown(
-                '<div class="header-subtitle">From Idea to Production in Seconds • AI-powered deployment platform to build, deploy, and scale your MCP servers instantly</div>',
+                '<div class="header-subtitle">Talk to Claude, Ship MCP Servers • Your AI pair programmer that turns conversations into production-ready MCP deployments—chat your way from prototype to live API in one session</div>',
                 elem_classes="header-subtitle"
             )
 
