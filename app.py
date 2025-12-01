@@ -255,7 +255,7 @@ with gr.Blocks(title="Instant MCP - AI-Powered MCP Deployment") as gradio_app:
             gr.HTML("""
                 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; border-radius: 12px; margin-bottom: 20px;">
                     <iframe 
-                        src="https://www.youtube.com/embed/re75nevCMjI?vq=hd1440&hd=1&modestbranding=1&rel=0" 
+                        src="https://www.youtube.com/embed/NEW_VIDEO_ID" 
                         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; border-radius: 12px;"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                         allowfullscreen>
@@ -446,4 +446,3 @@ if __name__ == "__main__":
         port=port,
         log_level="info"
     )
-
