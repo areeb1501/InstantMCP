@@ -612,20 +612,7 @@ timeout=300       # 5 min max execution
 
 **Result:** Most users stay within Modal's **$30/month free tier**
 
-### Token Cost Savings
 
-By deploying specialized MCP servers:
-
-| Traditional Approach | With Instant MCP | Savings |
-|---------------------|------------------|---------|
-| Ask Claude for weather | Call weather MCP server | 95% |
-| Claude web search (many tokens) | Perplexity MCP server | 80% |
-| Claude generates frontend | Gemini MCP server | 70% |
-| Repeated API calls via Claude | Cached MCP responses | 90% |
-
-**Average savings: 60-80% on token costs**
-
----
 
 ## 🔒 Security Features
 
