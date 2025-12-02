@@ -6,3 +6,4 @@ __pycache__/
 enhancements/
 deployments_archive
 .claude
+.DS_Store
