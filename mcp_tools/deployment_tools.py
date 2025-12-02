@@ -72,6 +72,73 @@ def make_mcp_server():
     load_dotenv()
 
     # ============================================================================
+    # AUTOMATIC USAGE TRACKING
+    # ============================================================================
+    import os
+    import requests
+    import time
+    from datetime import datetime
+    from functools import wraps
+
+    WEBHOOK_URL = os.getenv('MCP_WEBHOOK_URL', '')
+    DEPLOYMENT_ID = os.getenv('MCP_DEPLOYMENT_ID', 'unknown')
+
+    def _send_tracking(tool_name, duration_ms, success, error=None):
+        """Send tracking data to webhook endpoint"""
+        if not WEBHOOK_URL:
+            return
+
+        try:
+            requests.post(WEBHOOK_URL, json={
+                'deployment_id': DEPLOYMENT_ID,
+                'tool_name': tool_name,
+                'timestamp': datetime.utcnow().isoformat() + 'Z',
+                'duration_ms': duration_ms,
+                'success': success,
+                'error': error
+            }, timeout=2)
+        except:
+            pass  # Silent failure
+
+    # Save the original mcp.tool decorator
+    _original_tool_decorator = mcp.tool
+
+    def _tracking_tool_decorator(*dec_args, **dec_kwargs):
+        """Wraps @mcp.tool() to automatically track all tool calls"""
+
+        def decorator(func):
+            @wraps(func)
+            def wrapper(*args, **kwargs):
+                start_time = time.time()
+                success = True
+                error_msg = None
+
+                try:
+                    result = func(*args, **kwargs)
+                    return result
+                except Exception as e:
+                    success = False
+                    error_msg = str(e)
+                    raise
+                finally:
+                    duration_ms = int((time.time() - start_time) * 1000)
+                    _send_tracking(func.__name__, duration_ms, success, error_msg)
+
+            # Apply the original FastMCP decorator to our tracking wrapper
+            return _original_tool_decorator(*dec_args, **dec_kwargs)(wrapper)
+
+        return decorator
+
+    # Replace mcp.tool with our tracking version
+    mcp.tool = _tracking_tool_decorator
+
+    if WEBHOOK_URL:
+        print(f"✅ Tracking enabled: {WEBHOOK_URL}")
+        print(f"📍 Deployment ID: {DEPLOYMENT_ID}")
+    else:
+        print("⚠️  No webhook URL - tracking disabled")
+
+    # ============================================================================
     # ⚠️  USER CODE FORMAT (FastMCP Official Pattern)
     # ============================================================================
     # Your tool code MUST follow the standard FastMCP pattern:
@@ -915,10 +982,8 @@ def get_cat_fact() -> str:
         env_vars_setup = _generate_env_vars_setup(env_vars)
 
         # Generate webhook configuration
-        webhook_url = os.getenv('MCP_WEBHOOK_URL', '')
-        if not webhook_url:
-            base_url = os.getenv('MCP_BASE_URL', 'http://localhost:7860')
-            webhook_url = f"{base_url}/api/webhook/usage"
+        from utils.webhook_receiver import get_webhook_url
+        webhook_url = get_webhook_url()
 
         webhook_env_vars_code = f'''
 secrets_dict["MCP_WEBHOOK_URL"] = "{webhook_url}"
@@ -1656,10 +1721,8 @@ def update_deployment_code(
             env_vars_setup = _generate_env_vars_setup(env_vars)
 
             # Generate webhook configuration
-            webhook_url = os.getenv('MCP_WEBHOOK_URL', '')
-            if not webhook_url:
-                base_url = os.getenv('MCP_BASE_URL', 'http://localhost:7860')
-                webhook_url = f"{base_url}/api/webhook/usage"
+            from utils.webhook_receiver import get_webhook_url
+            webhook_url = get_webhook_url()
 
             webhook_env_vars_code = f'''
 secrets_dict["MCP_WEBHOOK_URL"] = "{webhook_url}"

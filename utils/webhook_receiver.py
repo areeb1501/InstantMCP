@@ -12,12 +12,118 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
+def get_base_url() -> str:
+    """
+    Auto-detect the base URL for the application.
+    
+    Checks in order:
+    1. MCP_BASE_URL environment variable (explicit override)
+    2. SPACE_HOST for Hugging Face Spaces
+    3. Fallback to localhost for local development
+    
+    Returns:
+        str: Base URL (e.g., 'https://mcp-1st-birthday-instantmcp.hf.space')
+    """
+    # Check for explicit override
+    base_url = os.getenv('MCP_BASE_URL')
+    if base_url:
+        return base_url.rstrip('/')
+    
+    # Check if running on Hugging Face Spaces
+    space_host = os.getenv('SPACE_HOST')
+    if space_host:
+        # HF Spaces provides SPACE_HOST without protocol
+        return f"https://{space_host}"
+    
+    # Fallback to localhost for local development
+    port = os.getenv('PORT', '7860')
+    return f"http://localhost:{port}"
+
+
 def get_webhook_url() -> str:
-    """Get the configured webhook URL"""
-    base_url = os.getenv('MCP_BASE_URL', 'http://localhost:7860')
+    """
+    Get the configured webhook URL for usage tracking.
+    
+    Returns:
+        str: Full webhook URL (e.g., 'https://your-app.hf.space/api/webhook/usage')
+    """
+    # Check for explicit webhook URL override
+    webhook_url = os.getenv('MCP_WEBHOOK_URL')
+    if webhook_url:
+        return webhook_url
+    
+    # Build webhook URL from base URL
+    base_url = get_base_url()
     return f"{base_url}/api/webhook/usage"
 
 
 def is_webhook_enabled() -> bool:
     """Check if webhook endpoint is enabled"""
     return os.getenv('MCP_WEBHOOK_ENABLED', 'true').lower() == 'true'
+
+
+def get_webhook_info() -> dict:
+    """
+    Get complete webhook configuration information.
+    
+    Returns:
+        dict: Webhook configuration details
+    """
+    return {
+        "enabled": is_webhook_enabled(),
+        "base_url": get_base_url(),
+        "webhook_url": get_webhook_url(),
+        "environment": "HuggingFace Spaces" if os.getenv('SPACE_HOST') else "Local Development"
+    }
+
+
+def test_webhook_connection() -> dict:
+    """
+    Test the webhook endpoint connectivity.
+    
+    Returns:
+        dict: Test results with success status and details
+    """
+    if not is_webhook_enabled():
+        return {
+            "success": False,
+            "message": "Webhook is disabled in configuration"
+        }
+    
+    webhook_url = get_webhook_url()
+    
+    try:
+        import requests
+        from datetime import datetime
+        
+        # Send a test webhook
+        test_data = {
+            'deployment_id': 'test-webhook-connection',
+            'tool_name': 'test_connection',
+            'timestamp': datetime.utcnow().isoformat() + 'Z',
+            'duration_ms': 100,
+            'success': True,
+            'error': None
+        }
+        
+        response = requests.post(webhook_url, json=test_data, timeout=5)
+        
+        if response.status_code == 200:
+            return {
+                "success": True,
+                "message": f"Webhook endpoint is reachable at {webhook_url}",
+                "status_code": response.status_code
+            }
+        else:
+            return {
+                "success": False,
+                "message": f"Webhook returned status {response.status_code}",
+                "status_code": response.status_code
+            }
+    
+    except Exception as e:
+        return {
+            "success": False,
+            "message": f"Failed to connect to webhook: {str(e)}",
+            "webhook_url": webhook_url
+        }
